@@ -1,8 +1,8 @@
 package com.lx.history
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -11,5 +11,6 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         startActivity(Intent(this,MainActivity::class.java))
+        finish()
     }
 }
