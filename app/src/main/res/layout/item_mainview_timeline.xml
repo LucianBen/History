@@ -1,13 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-            android:id="@+id/tvItemName"
-            android:padding="10dp"
+    <View android:layout_width="1dp"
+          android:layout_height="0dp"
+          android:background="@color/grey"
+          app:layout_constraintStart_toStartOf="@+id/imageView" app:layout_constraintEnd_toEndOf="@+id/imageView"
+          app:layout_constraintTop_toBottomOf="@+id/imageView"
+          app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View android:layout_width="1dp"
+          android:layout_height="0dp"
+          android:background="@color/grey"
+          app:layout_constraintStart_toStartOf="@+id/imageView" app:layout_constraintEnd_toEndOf="@+id/imageView"
+          app:layout_constraintBottom_toTopOf="@+id/imageView"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"/>
+            android:src="@mipmap/main_dot"
+            android:id="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"/>
 
-</LinearLayout>
+    <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="16dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            android:layout_marginStart="16dp"
+            app:layout_constraintVertical_bias="0.579"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/tvItemTime"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B.C\n104"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintVertical_bias="0.529"/>
+
+            <View android:layout_width="1dp"
+                  android:layout_height="0dp"
+                  android:background="@color/grey1"
+                  app:layout_constraintStart_toEndOf="@+id/tvItemTime"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginBottom="16dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  android:layout_marginTop="16dp"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:id="@+id/view"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/test"
+                      app:layout_constraintStart_toEndOf="@+id/view"
+                      android:layout_marginStart="16dp"
+                      app:layout_constraintTop_toTopOf="parent"
+                      android:layout_marginTop="16dp"
+                      android:id="@+id/tvItemName"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvtemImage"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvItemType"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvItemName"
+                    android:layout_marginEnd="16dp"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/test"
+                      android:textSize="@dimen/tiny_font_size"
+                      android:paddingTop="3dp"
+                      android:paddingBottom="3dp"
+                      android:paddingStart="6dp"
+                      android:paddingEnd="6dp"
+                      android:maxLines="1"
+                      android:textColor="@color/white"
+                      android:background="@drawable/button_rectangle_rounded_orange"
+                      app:layout_constraintStart_toStartOf="@+id/view"
+                      android:layout_marginStart="16dp"
+                      android:layout_marginBottom="16dp"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      android:id="@+id/tvItemType"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

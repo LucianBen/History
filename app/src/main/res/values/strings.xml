@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">History</string>
+
+    <string name="test">这是测试</string>
+    <string name="test1">1234567890</string>
+    <string name="test2">ABCDEFG</string>
+    <string name="test3">abcdefg</string>
+    <string name="test4">;=-[]/</string>
 </resources>
