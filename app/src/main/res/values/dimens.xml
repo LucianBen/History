@@ -6,4 +6,5 @@
     <dimen name="large_font_size">18sp</dimen>
     <dimen name="huge_font_size">20sp</dimen>
 
+    <dimen name="bottombar_height">48dp</dimen>
 </resources>

@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="vertical">
 
-    <androidx.viewpager2.widget.ViewPager2
+    <com.lx.history.view.CustomScrollViewPager
             android:id="@+id/mainViewpager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:overScrollMode="never"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"
+            android:layout_above="@id/mainBottonView"/>
 
-    <com.google.android.material.tabs.TabLayout
-            android:id="@+id/mainTabs"
-            app:tabIndicatorGravity="top"
-            android:background="@color/colorPrimary"
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/mainBottonView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            app:itemIconTint="@drawable/selector_item_primary_color"
+            app:itemTextColor="@drawable/selector_item_primary_color"
+            app:menu="@menu/menu_navigation_bottom"/>
 
-</LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mainFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:src="@mipmap/main_empty"
+            android:tint="@color/grey"
+            app:backgroundTint="@android:color/white"
+            app:borderWidth="0dp"
+            app:elevation="9dp"/>
+
+</RelativeLayout>

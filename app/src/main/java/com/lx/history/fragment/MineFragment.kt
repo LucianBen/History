@@ -9,11 +9,12 @@ class MineFragment : BaseFragment() {
         fun create(): MineFragment = MineFragment()
     }
 
-    override val layoutId: Int
-        get() = R.layout.layout_mainview_mine
+    override val layoutId: Int = R.layout.layout_mainview_mine
+
+    private lateinit var title: String
 
     override fun initView(view: View) {
-
+        title = arguments!!.getString("title")
     }
 
     override fun initData(view: View) {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/item_home"
+            android:checked="true"
+            android:icon="@mipmap/main_home"
+            android:title="@string/home"/>
+
+    <item
+            android:id="@+id/item_species"
+            android:icon="@mipmap/main_species"
+            android:title="@string/species"/>
+
+    <!--must set the item title to empty-->
+    <item
+            android:id="@+id/item_empty"
+            android:title=""/>
+
+    <item
+            android:id="@+id/item_discover"
+            android:icon="@mipmap/main_discover"
+            android:title="@string/discover"/>
+
+    <item
+            android:id="@+id/item_mine"
+            android:icon="@mipmap/main_mine"
+            android:title="@string/mine"/>
+</menu>
