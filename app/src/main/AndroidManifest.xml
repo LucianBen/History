@@ -23,11 +23,8 @@
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainBaseActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.MainMiddleActivity"/>
+
     </application>
 
 </manifest>

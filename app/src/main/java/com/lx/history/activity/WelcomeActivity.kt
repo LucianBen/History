@@ -1,17 +1,16 @@
 package com.lx.history.activity
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.lx.history.R
+import com.lx.history.base.BaseActivity
 
-class WelcomeActivity : AppCompatActivity() {
+class WelcomeActivity : BaseActivity() {
+    override val layoutId: Int = R.layout.activity_welcome
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
-
+    override fun initView() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
+
+
 }

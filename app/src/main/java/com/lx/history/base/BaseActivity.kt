@@ -1,11 +1,12 @@
 package com.lx.history.base
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.history.MyApplication
-import android.content.Intent
-
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -20,11 +21,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
         initView()
 
-//        if (application == null) {// 得到Application对象
-//            application = getApplication() as MyApplication
-//        }
+        if (application == null) {// 得到Application对象
+            application = getApplication() as MyApplication
+        }
         context = this// 把当前的上下文对象赋值给BaseActivity
-//        addActivity()// 调用添加方法
+        addActivity()// 调用添加方法
 
     }
 

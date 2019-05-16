@@ -6,10 +6,6 @@ import com.lx.history.base.BaseFragment
 
 class DiscoverFragment : BaseFragment() {
 
-    companion object {
-        fun create() = DiscoverFragment()
-    }
-
     override val layoutId: Int = R.layout.layout_mainview_discovery
 
     override fun initView(view: View) {

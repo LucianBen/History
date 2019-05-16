@@ -11,15 +11,7 @@ import kotlinx.android.synthetic.main.layout_mainview_timeline.view.*
 
 class HomeFragment : BaseFragment() {
 
-    companion object {
-        fun create(): HomeFragment {
-            return HomeFragment()
-        }
-
-    }
-
     override val layoutId: Int = R.layout.layout_mainview_timeline
-
 
     override fun initView(view: View) {
         view.mainHomeRecyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
