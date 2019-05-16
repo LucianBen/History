@@ -53,7 +53,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
-    protected fun readyGo(clazz: Class<*>) {
+    protected fun startGo(clazz: Class<*>) {
         val intent = Intent(this, clazz)
         startActivity(intent)
     }

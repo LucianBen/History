@@ -6,7 +6,7 @@
                 android:background="@android:color/transparent"
                 android:orientation="vertical">
 
-    <com.lx.history.view.CustomScrollViewPager
+    <com.lx.history.view.CustomViewPager
             android:id="@+id/mainViewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

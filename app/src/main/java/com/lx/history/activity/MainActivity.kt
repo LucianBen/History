@@ -65,7 +65,7 @@ class MainActivity : BaseActivity() {
 
             }
         mainFab.setOnClickListener {
-           showToast("")
+            startGo(MainMiddleActivity::class.java)
         }
     }
 
