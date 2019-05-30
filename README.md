@@ -20,5 +20,4 @@
 好的项目肯定离不开团队合作，所以要写出好项目，肯定要借鉴其他项目和思想。在此感谢以下第三方开源库
 - [Glide](https://github.com/bumptech/glide)
 - [BottomNavigationView](https://github.com/ittianyu/BottomNavigationViewEx)
-- [GSYVideoPlayer](https://github.com/CarGuo/GSYVideoPlayer)
  
