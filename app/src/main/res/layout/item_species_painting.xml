@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="123"
-              android:id="@+id/tvPaintingDate"/>
+              android:text="——  05月29日  ——"
+              android:layout_gravity="center_horizontal"
+              android:id="@+id/tvPaintingDate"
+              android:layout_marginTop="8dp"
+              app:layout_constraintTop_toTopOf="parent"
+              android:layout_marginStart="16dp"
+              app:layout_constraintStart_toStartOf="parent"
+              android:layout_marginEnd="16dp"
+              app:layout_constraintEnd_toEndOf="parent"/>
 
-</LinearLayout>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/title"
+              android:id="@+id/tvPaintingTitle"
+              android:textStyle="bold"
+             android:textColor="#000000"
+              app:layout_constraintStart_toEndOf="@+id/ivPaintingImage"
+              android:layout_marginStart="16dp"
+              app:layout_constraintTop_toTopOf="@+id/ivPaintingImage"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/author"
+              android:id="@+id/tvPaintingAuthor"
+              app:layout_constraintStart_toStartOf="@+id/tvPaintingTitle"
+              android:layout_marginTop="8dp"
+              app:layout_constraintTop_toBottomOf="@+id/tvPaintingTitle"/>
+
+    <TextView android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:text="@string/content"
+              android:maxLines="5"
+              android:ellipsize="end"
+              android:maxEms="50"
+              app:layout_constraintStart_toStartOf="@+id/tvPaintingAuthor"
+              android:layout_marginTop="8dp"
+              app:layout_constraintTop_toBottomOf="@+id/tvPaintingAuthor" android:id="@+id/tvPaintingContent"
+              android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.0"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/type"
+              android:maxEms="6"
+              app:layout_constraintTop_toTopOf="@+id/ivPaintingImage"
+              app:layout_constraintStart_toStartOf="@+id/ivPaintingImage"
+              android:id="@+id/tvPaintingType" app:layout_constraintEnd_toEndOf="@+id/ivPaintingImage"
+              app:layout_constraintHorizontal_bias="0.0"/>
+
+    <ImageView android:layout_width="100dp"
+               android:layout_height="140dp"
+               android:src="@mipmap/ic_launcher"
+               android:id="@+id/ivPaintingImage"
+               android:layout_marginTop="16dp"
+               app:layout_constraintTop_toBottomOf="@+id/tvPaintingDate"
+               app:layout_constraintStart_toStartOf="parent"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

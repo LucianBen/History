@@ -2,11 +2,11 @@ package com.lx.history.base
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.history.MyApplication
+import com.lx.history.R
+import com.lx.history.view.StatusBarCompat
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -18,8 +18,10 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
+        StatusBarCompat.compat(this, 0xFFFF6347.toInt())
 
         initView()
+        initData()
 
         if (application == null) {// 得到Application对象
             application = getApplication() as MyApplication
@@ -30,6 +32,8 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected abstract fun initView()
+
+    protected abstract fun initData()
 
 
     // 添加Activity方法
@@ -52,10 +56,8 @@ abstract class BaseActivity : AppCompatActivity() {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
-
-    protected fun startGo(clazz: Class<*>) {
-        val intent = Intent(this, clazz)
-        startActivity(intent)
+    protected fun jumpPage(clazz: Class<*>) {
+        startActivity(Intent(this, clazz))
     }
 
 }

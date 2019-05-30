@@ -13,6 +13,7 @@ import com.lx.history.fragment.DiscoverFragment
 import com.lx.history.fragment.HomeFragment
 import com.lx.history.fragment.MineFragment
 import com.lx.history.fragment.SpeciesFragment
+import com.lx.history.view.StatusBarCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -24,6 +25,8 @@ class MainActivity : BaseActivity() {
     private lateinit var adapter: Vp2Adapter
 
     override fun initView() {
+        StatusBarCompat.compat(this, 0xFFFFF)
+
         val homeFragment = HomeFragment()
         val speciesFragment = SpeciesFragment()
         val discoverFragment = DiscoverFragment()
@@ -65,8 +68,12 @@ class MainActivity : BaseActivity() {
 
             }
         mainFab.setOnClickListener {
-            startGo(MainMiddleActivity::class.java)
+            jumpPage(MainMiddleActivity::class.java)
         }
+    }
+
+    override fun initData() {
+
     }
 
     class Vp2Adapter(fm: FragmentManager, private val data: List<Fragment>) : FragmentPagerAdapter(fm) {

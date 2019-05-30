@@ -11,4 +11,10 @@
     <string name="species">分类</string>
     <string name="discover">探索</string>
     <string name="mine">我的</string>
+    <string name="title">title</string>
+    <string name="author">author</string>
+    <string name="content">content</string>
+    <string name="type">type</string>
+    <string name="title_activity_video_player">VideoPlayerActivity</string>
+    <string name="next_step">下一步</string>
 </resources>

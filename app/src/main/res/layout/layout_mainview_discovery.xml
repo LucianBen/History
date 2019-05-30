@@ -11,4 +11,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/rv_film"/>
 
+    <TextView android:layout_width="match_parent"
+              android:padding="10dp"
+              android:layout_height="wrap_content"
+              android:text="12)" android:id="@+id/tvClick"/>
 </LinearLayout>

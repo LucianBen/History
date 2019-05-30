@@ -7,4 +7,5 @@
     <dimen name="huge_font_size">20sp</dimen>
 
     <dimen name="bottombar_height">48dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
