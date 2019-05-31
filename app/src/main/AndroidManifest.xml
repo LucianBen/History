@@ -12,6 +12,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".activity.BookReadActivity">
+        </activity>
+        <activity android:name=".activity.PaintingStagingActivity">
+        </activity>
+        <activity android:name=".activity.PaintingLongActivity">
+        </activity>
+        <activity android:name=".activity.PaintingAllActivity">
+        </activity>
         <activity android:name=".activity.RecordEventActivity">
         </activity>
         <activity android:name=".activity.VideoPlayerActivity">
@@ -30,8 +38,9 @@
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainMiddleActivity"
-        android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".activity.MainMiddleActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

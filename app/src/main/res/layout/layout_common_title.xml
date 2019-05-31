@@ -14,7 +14,7 @@
             android:src="@drawable/vector_drawable_shutdown"
             android:layout_marginStart="15dp"
             android:id="@+id/ivLeftImage"
-            android:onClick="onPageClick"
+            android:onClick="onBaseClick"
             android:contentDescription="@null"/>
 
     <TextView

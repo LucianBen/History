@@ -2,8 +2,8 @@ package com.lx.history.activity
 
 import com.lx.history.R
 import com.lx.history.base.BaseActivity
-import com.lx.history.view.StatusBarCompat
 import kotlinx.android.synthetic.main.activity_main_middle.*
+import kotlinx.android.synthetic.main.layout_common_title.*
 
 /**
  *  Created by LucianBen on 2019/05/16.
@@ -12,14 +12,16 @@ import kotlinx.android.synthetic.main.activity_main_middle.*
  */
 
 class MainMiddleActivity : BaseActivity() {
-    override fun initData() {
 
-    }
 
     override val layoutId: Int = R.layout.activity_main_middle
 
     override fun initView() {
+        tvTitle.text = "我的大事记"
         fabRecordEvent.setOnClickListener { jumpPage(RecordEventActivity::class.java) }
     }
 
+    override fun initData() {
+
+    }
 }

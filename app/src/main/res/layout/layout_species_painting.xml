@@ -17,6 +17,7 @@
                 android:drawableTop="@mipmap/main_empty"
                 android:drawablePadding="10dp"
                 android:text="全部画作"
+                android:onClick="onSpeciesPaintingFragmentClick"
                 android:id="@+id/tvSpeciesAllPainting"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="32dp"/>
@@ -26,13 +27,15 @@
                 android:layout_height="wrap_content"
                 android:drawableTop="@mipmap/main_empty"
                 android:drawablePadding="10dp"
-                android:text="收藏地图"
+                android:onClick="onSpeciesPaintingFragmentClick"
+                android:text="长幅画作"
                 android:layout_alignTop="@+id/tvSpeciesAllPainting"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/tvSpeciesMap"/>
+                android:id="@+id/tvSpeciesLongPainting"/>
 
         <TextView
                 android:layout_width="wrap_content"
+                android:onClick="onSpeciesPaintingFragmentClick"
                 android:layout_height="wrap_content"
                 android:drawableTop="@mipmap/main_empty"
                 android:drawablePadding="10dp"
@@ -40,7 +43,7 @@
                 android:layout_alignTop="@+id/tvSpeciesAllPainting"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="32dp"
-                android:id="@+id/tvSpeciesPartPainting"/>
+                android:id="@+id/tvSpeciesStagingPainting"/>
 
 
         <androidx.recyclerview.widget.RecyclerView

@@ -23,7 +23,6 @@ class RecordEventActivity : BaseActivity() {
 
     fun onPageClick(view:View){
         when (view.id) {
-            R.id.ivLeftImage->removeActivity()
             R.id.tvButtonConfirm->removeActivity()
         }
     }

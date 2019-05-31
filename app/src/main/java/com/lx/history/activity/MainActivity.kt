@@ -2,6 +2,7 @@ package com.lx.history.activity
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -91,6 +92,14 @@ class MainActivity : BaseActivity() {
             firstTime = secondTime
         } else {
             removeAllActivity()
+        }
+    }
+
+    fun onSpeciesPaintingFragmentClick(view: View) {
+        when (view.id) {
+            R.id.tvSpeciesAllPainting -> jumpPage(PaintingAllActivity::class.java)
+            R.id.tvSpeciesLongPainting -> jumpPage(PaintingLongActivity::class.java)
+            R.id.tvSpeciesStagingPainting -> jumpPage(PaintingStagingActivity::class.java)
         }
     }
 

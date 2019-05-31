@@ -173,6 +173,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="确认"
+                android:onClick="onPageClick"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/button_rectangle_rounded_orange"

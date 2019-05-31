@@ -21,6 +21,7 @@ class HomeAdapter(private val context: Context, private val data: List<String>, 
         holder.tvTime.text = "B.C\n${data[position]}"
         holder.tvName.text = "这是历史的开始 ${data[position]}"
         holder.tvType.text = "历史${position + 1}"
+
         val linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = RecyclerView.HORIZONTAL
         holder.rvPic.layoutManager = linearLayoutManager
