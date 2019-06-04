@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment() {
@@ -25,5 +25,9 @@ abstract class BaseFragment : Fragment() {
 
     protected open fun jumpPage(clazz: Class<*>) {
         startActivity(Intent(activity, clazz))
+    }
+
+    fun showToast(text: String) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 }

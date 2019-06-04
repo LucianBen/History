@@ -3,13 +3,11 @@ package com.lx.history.base
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.history.MyApplication
 import com.lx.history.R
 import com.lx.history.view.StatusBarCompat
-import kotlinx.android.synthetic.main.layout_common_title.*
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -63,9 +61,9 @@ abstract class BaseActivity : AppCompatActivity() {
         startActivity(Intent(this, clazz))
     }
 
-    fun onBaseClick(view: View){
+    fun onBaseClick(view: View) {
         when (view.id) {
-            R.id.ivLeftImage->removeActivity()
+            R.id.ivLeftImage -> removeActivity()
         }
     }
 

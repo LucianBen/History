@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.layout_common_title.*
 
 class MainMiddleActivity : BaseActivity() {
 
-
     override val layoutId: Int = R.layout.activity_main_middle
 
     override fun initView() {
