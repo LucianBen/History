@@ -19,14 +19,17 @@ import com.lx.history.R
 import com.lx.history.activity.MainActivity.Companion.cityCode
 import com.lx.history.activity.MainActivity.Companion.latitude
 import com.lx.history.activity.MainActivity.Companion.longitude
+import com.lx.history.activity.MapPlanningActivity
 import com.lx.history.base.BaseFragment
+import com.lx.history.bean.MultiPointAndTitleItem
 import java.util.*
 
 
 class DiscoverFragment : BaseFragment() {
 
     private lateinit var mMapView: MapView
-
+    // 中心点坐标
+    private var centerLatLng: LatLng = LatLng(latitude, longitude)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val mRoot = inflater.inflate(R.layout.layout_mainview_discovery, container, false)
@@ -42,7 +45,7 @@ class DiscoverFragment : BaseFragment() {
 
 
     private var followMove = true
-    val multiPointList = ArrayList<MultiPointItem>()
+    val multiPointList = ArrayList<MultiPointAndTitleItem>()
 
     private fun initMap() {
         //初始化地图控制器对象
@@ -57,19 +60,18 @@ class DiscoverFragment : BaseFragment() {
             aMap.myLocationStyle = myLocationStyle//设置定位蓝点的Style
             aMap.isMyLocationEnabled = true// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
             aMap.uiSettings.isRotateGesturesEnabled = false//禁止旋转手势
+            aMap.uiSettings.setLogoBottomMargin(-50)//隐藏logo
+            aMap.uiSettings.isZoomControlsEnabled = false//隐藏缩放按钮
             aMap.setOnMyLocationChangeListener {
-                //禁止地图回到定位点
                 if (followMove) {
                     aMap.animateCamera(CameraUpdateFactory.newLatLng(LatLng(latitude, longitude)))
                 }
-            }
+            }  //禁止地图回到定位点
             aMap.setOnMapTouchListener {
                 if (followMove) {
-                    //用户拖动地图后，不再跟随移动，直到用户点击定位按钮
                     followMove = false
                 }
-            }
-
+            }//用户拖动地图后，不再跟随移动，直到用户点击定位按钮
 
             val query = Query("博物馆", "140100", cityCode)
             query.pageSize = 10// 设置每页最多返回多少条poiitem
@@ -83,16 +85,13 @@ class DiscoverFragment : BaseFragment() {
 
                 override fun onPoiSearched(result: PoiResult, rCode: Int) {//响应码:1000为成功，其他为失败
                     //解析result获取POI信息，绘制点
-
                     if (rCode == 1000) {
-
-                        for (item: PoiItem in result.pois) {
+                        result.pois.forEach { item ->
                             multiPointList.add(
-                                MultiPointItem(
-                                    LatLng(
-                                        item.latLonPoint.latitude,
-                                        item.latLonPoint.longitude
-                                    )
+                                MultiPointAndTitleItem(
+                                    LatLng(item.latLonPoint.latitude, item.latLonPoint.longitude),
+                                    item.title,
+                                    item.snippet
                                 )
                             )
                         }
@@ -104,23 +103,28 @@ class DiscoverFragment : BaseFragment() {
                 }
             })
             poiSearch.searchPOIAsyn()
+
         }
     }
 
-    private fun showResultOnMap(list: List<MultiPointItem>, aMap: AMap) {
+    private fun showResultOnMap(list: List<MultiPointAndTitleItem>, aMap: AMap) {
         val overlayOptions = MultiPointOverlayOptions()
         overlayOptions.icon(
             BitmapDescriptorFactory.fromBitmap(
                 BitmapFactory.decodeResource(resources, R.drawable.location_marker)
             )
-        )
-        overlayOptions.anchor(0.5f, 0.5f)
+        )//设置图标
+        overlayOptions.anchor(0.5f, 0.5f)//设置锚点
 
-        val multiPointOverlay = aMap.addMultiPointOverlay(overlayOptions)
-        multiPointOverlay.setItems(list)
+        aMap.addMultiPointOverlay(overlayOptions).setItems(list)//将规范化的点集交给海量点管理对象设置，待加载完毕即可看到海量点信息
         aMap.setOnMultiPointClickListener {
+            val marker = aMap.addMarker(MarkerOptions().position(it.latLng).title(it.title))
+            marker.showInfoWindow()//弹出信息框
 
-            return@setOnMultiPointClickListener false
+            aMap.setOnInfoWindowClickListener {
+                jumpPage(MapPlanningActivity::class.java)
+            }
+            true
         }
     }
 
@@ -153,7 +157,7 @@ class DiscoverFragment : BaseFragment() {
     }
 
     private inner class LoadTask(private val aMap: AMap) :
-        AsyncTask<Void, Void, List<MultiPointItem>>() {
+        AsyncTask<Void, Void, List<MultiPointAndTitleItem>>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
@@ -161,14 +165,45 @@ class DiscoverFragment : BaseFragment() {
             showToast("读取数据中...")
         }
 
-        override fun doInBackground(vararg params: Void): List<MultiPointItem> {
+        override fun doInBackground(vararg params: Void): List<MultiPointAndTitleItem> {
             return multiPointList
         }
 
-        override fun onPostExecute(multiPointItems: List<MultiPointItem>) {
+        override fun onPostExecute(multiPointItems: List<MultiPointAndTitleItem>) {
             super.onPostExecute(multiPointItems)
             showResultOnMap(multiPointItems, aMap)
+            //缩放移动地图
+            val pointList = mutableListOf<LatLng>()
+            for (point in multiPointItems.indices) {
+                pointList.add(point, multiPointItems[point].latLng)
+            }
+            zoomToSpanWithCenter(pointList, aMap)
+
         }
+    }
+
+    /**
+     * 缩放移动地图，保证所有自定义marker在可视范围中，且地图中心点不变。
+     */
+    fun zoomToSpanWithCenter(pointList: MutableList<LatLng>, aMap: AMap) {
+        if (pointList.isNotEmpty()) {
+            val bounds = getLatLngBounds(centerLatLng, pointList)
+            aMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 0))
+        }
+    }
+
+    //根据中心点和自定义内容获取缩放bounds
+    private fun getLatLngBounds(centerpoint: LatLng?, pointList: List<LatLng>): LatLngBounds {
+        val b = LatLngBounds.builder()
+        if (centerpoint != null) {
+            for (i in pointList.indices) {
+                val p = pointList[i]
+                val p1 = LatLng(centerpoint.latitude * 2 - p.latitude, centerpoint.longitude * 2 - p.longitude)
+                b.include(p)
+                b.include(p1)
+            }
+        }
+        return b.build()
     }
 
 }
