@@ -1,7 +1,7 @@
 package com.lx.history.activity
 
+import com.lx.common.BaseActivity
 import com.lx.history.R
-import com.lx.history.base.BaseActivity
 
 class VideoPlayerActivity : BaseActivity() {
     override fun initData() {

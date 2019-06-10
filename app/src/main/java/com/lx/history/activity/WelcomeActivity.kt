@@ -1,8 +1,8 @@
 package com.lx.history.activity
 
 import android.content.Intent
+import com.lx.common.BaseActivity
 import com.lx.history.R
-import com.lx.history.base.BaseActivity
 
 class WelcomeActivity : BaseActivity() {
 

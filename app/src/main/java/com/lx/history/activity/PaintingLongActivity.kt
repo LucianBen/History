@@ -3,9 +3,9 @@ package com.lx.history.activity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.lx.common.BaseActivity
 import com.lx.history.R
 import com.lx.history.adapter.PaintingLongAdapter
-import com.lx.history.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_painting_long.*
 import kotlinx.android.synthetic.main.layout_common_title.*
 
@@ -23,7 +23,7 @@ class PaintingLongActivity : BaseActivity() {
     )
 
     override fun initView() {
-        tvTitle.text="长幅画作"
+        tvTitle.text = "长幅画作"
 
         rv_painting_long.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv_painting_long.itemAnimator = DefaultItemAnimator()

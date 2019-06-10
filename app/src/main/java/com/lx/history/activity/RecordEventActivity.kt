@@ -1,8 +1,8 @@
 package com.lx.history.activity
 
 import android.view.View
+import com.lx.common.BaseActivity
 import com.lx.history.R
-import com.lx.history.base.BaseActivity
 import kotlinx.android.synthetic.main.layout_common_title.*
 
 /**
@@ -14,16 +14,16 @@ class RecordEventActivity : BaseActivity() {
     override val layoutId: Int = R.layout.activity_record_event
 
     override fun initView() {
-        tvTitle.text="记录事件"
+        tvTitle.text = "记录事件"
     }
 
     override fun initData() {
 
     }
 
-    fun onPageClick(view:View){
+    fun onPageClick(view: View) {
         when (view.id) {
-            R.id.tvButtonConfirm->removeActivity()
+            R.id.tvButtonConfirm -> removeActivity()
         }
     }
 

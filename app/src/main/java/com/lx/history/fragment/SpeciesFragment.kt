@@ -4,11 +4,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.lx.history.R
-import com.lx.history.base.BaseFragment
+import com.lx.common.BaseFragment
 import com.lx.history.control.TabLayoutMediator
 import kotlinx.android.synthetic.main.layout_mainview_species.view.*
 
-class SpeciesFragment : BaseFragment() {
+class SpeciesFragment : com.lx.common.BaseFragment() {
     override val layoutId: Int = R.layout.layout_mainview_species
 
     val tabName = arrayListOf("画作", "古籍")

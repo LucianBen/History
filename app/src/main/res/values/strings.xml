@@ -1,23 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
     <string name="app_name">History</string>
 
-    <string name="test">这是测试</string>
-    <string name="test1">1234567890</string>
-    <string name="test2">ABCDEFG</string>
-    <string name="test3">abcdefg</string>
-    <string name="test4">;=-[]/</string>
-
     <string name="home">时间轴</string>
     <string name="species">分类</string>
     <string name="discover">探索</string>
     <string name="mine">我的</string>
-    <string name="title">title</string>
-    <string name="author">author</string>
-    <string name="content">content</string>
-    <string name="type">type</string>
-    <string name="title_activity_video_player">VideoPlayerActivity</string>
-    <string name="next_step">下一步</string>
 
 
-    <string name="no_result">对不起，没有搜索到相关数据！</string>
+
 </resources>

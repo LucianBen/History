@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lx.history.R
 import com.lx.history.adapter.HomeAdapter
-import com.lx.history.base.BaseFragment
+import com.lx.common.BaseFragment
 import kotlinx.android.synthetic.main.layout_mainview_timeline.view.*
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : com.lx.common.BaseFragment() {
 
     override val layoutId: Int = R.layout.layout_mainview_timeline
 

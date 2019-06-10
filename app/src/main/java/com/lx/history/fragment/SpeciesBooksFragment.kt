@@ -2,9 +2,9 @@ package com.lx.history.fragment
 
 import android.view.View
 import com.lx.history.R
-import com.lx.history.base.BaseFragment
+import com.lx.common.BaseFragment
 
-class SpeciesBooksFragment : BaseFragment() {
+class SpeciesBooksFragment : com.lx.common.BaseFragment() {
     companion object {
         fun create(): SpeciesBooksFragment {
             return SpeciesBooksFragment()

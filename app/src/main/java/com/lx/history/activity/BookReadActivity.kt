@@ -1,7 +1,7 @@
 package com.lx.history.activity
 
+import com.lx.common.BaseActivity
 import com.lx.history.R
-import com.lx.history.base.BaseActivity
 
 /**
  *  阅读界面

@@ -4,13 +4,12 @@ import android.view.View
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lx.history.R
-import com.lx.history.activity.PaintingAllActivity
 import com.lx.history.adapter.SpeciesPaintingAdapter
-import com.lx.history.base.BaseFragment
+import com.lx.common.BaseFragment
 import kotlinx.android.synthetic.main.layout_species_painting.view.*
 
 
-class SpeciesPaintingFragment : BaseFragment() {
+class SpeciesPaintingFragment : com.lx.common.BaseFragment() {
 
     companion object {
         fun create(): SpeciesPaintingFragment = SpeciesPaintingFragment()
