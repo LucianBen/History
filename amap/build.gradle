@@ -1,9 +1,8 @@
 if (isModule.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
     apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
 }
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -11,7 +10,6 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-//        applicationId "com.lx.amap"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
@@ -29,21 +27,25 @@ android {
     }
     sourceSets {
         main {
+            jniLibs.srcDirs = ['libs']
+            
             if (isModule.toBoolean()) {
-                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
             } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }
         }
     }
+
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation project(':common')
+    implementation project(':baseLibrary')
     //高德地图  地图SDK  导航SDK V6.8.0  定位SDK V4.6.0
-    implementation files('libs/AMap3DMap_6.9.0_AMapNavi_6.8.0_AMapSearch_6.9.0_AMapLocation_4.6.0_20190530.jar')
-    //GSYVideoPlayer 视频播放器（IJKplayer、ExoPlayer、MediaPlayer）
-    //    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
-    //    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
+    api files('libs/AMap3DMap_6.9.0_AMapNavi_6.8.0_AMapSearch_6.9.0_AMapLocation_4.6.0_20190530.jar')
+
 }

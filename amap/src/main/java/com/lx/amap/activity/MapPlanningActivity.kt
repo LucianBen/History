@@ -11,9 +11,9 @@ import com.amap.api.maps.MapView
 import com.amap.api.services.core.AMapException
 import com.amap.api.services.core.LatLonPoint
 import com.amap.api.services.route.*
+import com.lucianBen.baselibrary.BaseActivity
+import com.lucianBen.baselibrary.StatusBarCompat
 import com.lx.amap.R
-import com.lx.common.BaseActivity
-import com.lx.common.StatusBarCompat
 import com.lx.overlay.util.AMapUtil
 import kotlinx.android.synthetic.main.activity_map_planning.*
 
@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_map_planning.*
  *  Created by LucianBen on 2019/6/10
  *  Describe: 步行、骑车、驾车  地图规划路线
  */
-
 
 class MapPlanningActivity : BaseActivity(), RouteSearch.OnRouteSearchListener {
     override val layoutId: Int = R.layout.activity_map_planning
@@ -33,8 +32,10 @@ class MapPlanningActivity : BaseActivity(), RouteSearch.OnRouteSearchListener {
     private lateinit var fromAndTo: RouteSearch.FromAndTo
 
     private val itemArr = listOf("步行", "骑行", "驾车", "公交")
+
     override fun initView() {
         StatusBarCompat.compat(this, 0xFFFFFFFF.toInt())
+
         mapView = findViewById(R.id.mapViewPlanning)
         mapView.onCreate(null)
         aMap = mapView.map
@@ -45,7 +46,7 @@ class MapPlanningActivity : BaseActivity(), RouteSearch.OnRouteSearchListener {
         etStartPoint.text = Editable.Factory.getInstance().newEditable("我的位置")
         etEndPoint.text = Editable.Factory.getInstance().newEditable(intent.getStringExtra("title"))
 
-        mStartPoint = LatLonPoint(com.lx.common.Com.latitude, com.lx.common.Com.longitude)//起点
+        mStartPoint = LatLonPoint(com.lucianBen.baselibrary.Com.latitude, com.lucianBen.baselibrary.Com.longitude)//起点
         mEndPoint = intent.getParcelableExtra("latlngPoint")
         fromAndTo = RouteSearch.FromAndTo(mStartPoint, mEndPoint)
 
@@ -59,11 +60,11 @@ class MapPlanningActivity : BaseActivity(), RouteSearch.OnRouteSearchListener {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
-                com.lx.common.Com.routeType = pos
+                com.lucianBen.baselibrary.Com.routeType = pos
                 bottomLayout.visibility = View.VISIBLE
                 busResult.visibility = View.GONE
 
-                when (com.lx.common.Com.routeType) {
+                when (com.lucianBen.baselibrary.Com.routeType) {
                     0 -> routeSearch.calculateWalkRouteAsyn(RouteSearch.WalkRouteQuery(fromAndTo))
                     1 -> routeSearch.calculateRideRouteAsyn(RouteSearch.RideRouteQuery(fromAndTo))
                     2 -> routeSearch.calculateDriveRouteAsyn(
@@ -71,7 +72,7 @@ class MapPlanningActivity : BaseActivity(), RouteSearch.OnRouteSearchListener {
                             // fromAndTo包含路径规划的起点和终点，drivingMode表示驾车模式
                             // 第三个参数表示途经点（最多支持16个），第四个参数表示避让区域（最多支持32个），第五个参数表示避让道路
                             fromAndTo,
-                            com.lx.common.Com.DRIVING_MULTI_STRATEGY_FASTEST_SHORTEST_AVOID_CONGESTION,
+                            com.lucianBen.baselibrary.Com.DRIVING_MULTI_STRATEGY_FASTEST_SHORTEST_AVOID_CONGESTION,
                             null,
                             null,
                             ""
@@ -85,7 +86,7 @@ class MapPlanningActivity : BaseActivity(), RouteSearch.OnRouteSearchListener {
                             RouteSearch.BusRouteQuery(
                                 // 第一个参数表示路径规划的起点和终点，第二个参数表示公交查询模式，
                                 // 第三个参数表示公交查询城市区号，第四个参数表示是否计算夜班车，0表示不计算
-                                fromAndTo, RouteSearch.BUS_DEFAULT, com.lx.common.Com.cityName, 0
+                                fromAndTo, RouteSearch.BUS_DEFAULT, com.lucianBen.baselibrary.Com.cityName, 0
                             )
                         )
                     }

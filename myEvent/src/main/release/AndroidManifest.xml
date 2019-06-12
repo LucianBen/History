@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.lx.myevent">
+
+    <application>
+        <activity android:name=".activity.MainMiddleActivity"/>
+        <activity android:name=".activity.RecordEventActivity"/>
+
+    </application>
+
+</manifest>

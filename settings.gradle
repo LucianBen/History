@@ -1,1 +1,1 @@
-include ':app', ':amap', ':common'
+include ':app', ':amap', ':baseLibrary', ':myEvent', ':historyWorks'

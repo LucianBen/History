@@ -2,9 +2,9 @@ package com.lx.history.fragment
 
 import android.view.View
 import com.lx.history.R
-import com.lx.common.BaseFragment
+import com.lucianBen.baselibrary.BaseFragment
 
-class MineFragment : com.lx.common.BaseFragment() {
+class MineFragment : com.lucianBen.baselibrary.BaseFragment() {
 
     override val layoutId: Int = R.layout.layout_mainview_mine
 

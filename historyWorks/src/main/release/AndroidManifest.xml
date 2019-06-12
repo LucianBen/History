@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.lx.historyworks">
+
+    <application >
+
+        <activity android:name=".activity.BookReadActivity">
+        </activity>
+        <activity android:name=".activity.PaintingStagingActivity">
+        </activity>
+        <activity android:name=".activity.PaintingLongActivity">
+        </activity>
+        <activity android:name=".activity.PaintingAllActivity">
+        </activity>
+
+    </application>
+</manifest>

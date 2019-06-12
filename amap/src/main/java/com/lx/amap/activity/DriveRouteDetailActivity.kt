@@ -1,7 +1,7 @@
 package com.lx.amap.activity
 
+import com.lucianBen.baselibrary.BaseActivity
 import com.lx.amap.R
-import com.lx.common.BaseActivity
 
 /**
  *  Created by LucianBen on 2019/6/10
